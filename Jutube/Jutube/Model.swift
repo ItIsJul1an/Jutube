@@ -7,35 +7,17 @@
 
 import Foundation
 
+// We use the Decodable Protocol so that we can decode the json into Video
+struct Video {
+    
+    var videoId = ""
+    var channelTitle = ""
+    var title = ""
+    var description = ""
+    var thumbnailUrl = ""
+    var published = ""
+}
+
 class Model {
-    
-    
-    func getVideo() {
-        // Create a URL object
-        let url = URL(string: Constants.API_URI)
-        
-        guard url != nil else {
-            print("invalid url")
-            return
-        }
-        
-        // Get a URLSession object
-        let session = URLSession.shared
-        
-        // Get a data task from the URLSession object
-        let dataTask = session.dataTask(with: url!) {
-            (data, response, error) in
-            
-            // Check if there were any errors
-            if error != nil || data == nil {
-                print("error ocurred")
-                return
-            }
-            
-            // Parsin the data into video objects
-        }
-        
-        // Kick off the task
-        dataTask.resume()
-    }
+    var videos = [Video]()
 }
