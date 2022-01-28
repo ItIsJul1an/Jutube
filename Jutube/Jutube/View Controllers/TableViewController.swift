@@ -10,7 +10,7 @@ import UIKit
 class TableViewController: UITableViewController {
     
     var queue = DispatchQueue(label: "fetchData")
-    var video = Video()
+    var currentVideo = Video()
     var model = Model()
     
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class TableViewController: UITableViewController {
             
             DispatchQueue.main.async {
                 
-                self.video = tempModel
+                self.model = tempModel
                 self.tableView.reloadData()
                 
                 print("loaded data")
@@ -35,32 +35,33 @@ class TableViewController: UITableViewController {
         }
     }
     
-    func asyncDownload(url: URL) -> Video {
-        var currentVideo = Video()
+    func asyncDownload(url: URL) -> Model {
+        let model = Model()
         
         if let data = try? Data(contentsOf: url) {
             if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []){
                 if let obj = jsonObject as? [String: Any] {
                     if let items = obj["items"] as? [ [String:Any] ] {
                         for item in items {
+                            var video = Video()
                             if let id = item["id"] as? [String:Any] {
-                                currentVideo.videoId = id["videoId"] as! String
+                                video.videoId = id["videoId"] as! String
                             }
                             
                             if let snippet = item["snippet"] as? [String:Any] {
-                                currentVideo.published = snippet["publishedAt"] as! String
-                                currentVideo.channelTitle = snippet["channelTitle"] as! String
-                                currentVideo.title = snippet["title"] as! String
-                                currentVideo.description = snippet["description"] as! String
+                                video.published = snippet["publishedAt"] as! String
+                                video.channelTitle = snippet["channelTitle"] as! String
+                                video.title = snippet["title"] as! String
+                                video.description = snippet["description"] as! String
                                 
                                 if let thumbnails = snippet["thumbnails"] as? [String:Any] {
                                     if let high = thumbnails["high"] as? [String:Any] {
-                                        currentVideo.thumbnailUrl = high["url"] as! String
+                                        video.thumbnailUrl = high["url"] as! String
                                     }
                                 }
                             }
                             
-                            self.model.videos.append(currentVideo)
+                            model.videos.append(video)
                         }
                     }
                 }
@@ -71,7 +72,7 @@ class TableViewController: UITableViewController {
             print("failed to load data")
         }
         
-        return currentVideo
+        return model
     }
     
     // MARK: - Table view data source
@@ -88,14 +89,21 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "video", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VIDEOCELL_ID, for: indexPath)
         
         let video = model.videos[indexPath.row]
         
-        cell.textLabel?.text = person.personName
-        cell.detailTextLabel?.text = person.uri
+        cell.textLabel?.text = video.title
+        cell.detailTextLabel?.text = video.description
         
         return cell
+    }
+    
+    // OnRowClick()
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selected row \(indexPath)")
+        self.currentVideo = model.videos[indexPath.row]
+        performSegue(withIdentifier: "detailedInformation", sender: self)
     }
     
     /*
@@ -133,14 +141,10 @@ class TableViewController: UITableViewController {
      }
      */
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare")
+        if let viewController = segue.destination as? ViewController {
+            viewController.video = self.currentVideo
+        }
+    }
 }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// We use the Decodable Protocol so that we can decode the json into Video
 struct Video {
     
     var videoId = ""
