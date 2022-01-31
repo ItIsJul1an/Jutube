@@ -1,13 +1,21 @@
 //
-//  TableViewController.swift
+//  CustomViewController.swift
 //  Jutube
 //
-//  Created by Julian Berger on 26.01.22.
+//  Created by Julian Berger on 31.01.22.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class JutubeCustomCell: UITableViewCell{
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var publishedLabel: UILabel!
+}
+
+class JutubeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
     
     var queue = DispatchQueue(label: "fetchData")
     var currentVideo = Video()
@@ -16,9 +24,8 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = URL(string: Constants.API_URI) {
-            download(url: url)
-        }
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func download(url: URL) {
@@ -73,71 +80,52 @@ class TableViewController: UITableViewController {
         return model
     }
     
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+    @IBAction func onClick(_ sender: Any) {
+        if self.searchTextField.text != nil {
+            if let url = URL(string: Constants.API_URI + self.searchTextField.text!.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)) {
+                download(url: url)
+            }
+        }
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: UITableViewDataSource Functions
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.model.videos.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VIDEOCELL_ID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VIDEOCELL_ID, for: indexPath) as! JutubeCustomCell
         
         let video = model.videos[indexPath.row]
         
-        cell.textLabel?.text = video.title
-        cell.detailTextLabel?.text = video.description
+        let url = URL(string: video.thumbnailUrl)
+        
+        queue.async {
+            let data = try? Data(contentsOf: url!)
+            
+            if (data == nil) {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                cell.thumbnailImageView.image = UIImage(data: data!)
+            }
+        }
+        
+        cell.publishedLabel.text = video.published
         
         return cell
     }
     
     // OnRowClick()
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath)")
         self.currentVideo = model.videos[indexPath.row]
         performSegue(withIdentifier: "detailedInformation", sender: self)
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare")

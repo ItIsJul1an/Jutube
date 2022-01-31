@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E233EB227A84AD500B03F71 /* JutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E233EB127A84AD500B03F71 /* JutubeViewController.swift */; };
 		1E8210F727A1B01200E9CBE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8210F627A1B01200E9CBE4 /* AppDelegate.swift */; };
 		1E8210F927A1B01200E9CBE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8210F827A1B01200E9CBE4 /* SceneDelegate.swift */; };
 		1E8210FE27A1B01200E9CBE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8210FC27A1B01200E9CBE4 /* Main.storyboard */; };
@@ -16,9 +17,8 @@
 		1E82111827A1B01400E9CBE4 /* JutubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82111727A1B01400E9CBE4 /* JutubeUITests.swift */; };
 		1E82111A27A1B01400E9CBE4 /* JutubeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82111927A1B01400E9CBE4 /* JutubeUITestsLaunchTests.swift */; };
 		1E82112727A1B78100E9CBE4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82112627A1B78100E9CBE4 /* Constants.swift */; };
-		1E82112D27A1D6B700E9CBE4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82112C27A1D6B700E9CBE4 /* TableViewController.swift */; };
 		1E82112F27A1E6FE00E9CBE4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E82112E27A1E6FE00E9CBE4 /* Model.swift */; };
-		1EE1461D27A7D4FB003E1834 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1461C27A7D4FB003E1834 /* ViewController.swift */; };
+		1EE1461D27A7D4FB003E1834 /* DetailedJutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1461C27A7D4FB003E1834 /* DetailedJutubeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E233EB127A84AD500B03F71 /* JutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JutubeViewController.swift; sourceTree = "<group>"; };
 		1E8210F327A1B01200E9CBE4 /* Jutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8210F627A1B01200E9CBE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E8210F827A1B01200E9CBE4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,9 +53,8 @@
 		1E82111727A1B01400E9CBE4 /* JutubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JutubeUITests.swift; sourceTree = "<group>"; };
 		1E82111927A1B01400E9CBE4 /* JutubeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JutubeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E82112627A1B78100E9CBE4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		1E82112C27A1D6B700E9CBE4 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		1E82112E27A1E6FE00E9CBE4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		1EE1461C27A7D4FB003E1834 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1EE1461C27A7D4FB003E1834 /* DetailedJutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedJutubeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,12 +109,12 @@
 				1E82110127A1B01300E9CBE4 /* LaunchScreen.storyboard */,
 				1E8210FC27A1B01200E9CBE4 /* Main.storyboard */,
 				1E82112E27A1E6FE00E9CBE4 /* Model.swift */,
-				1E82112C27A1D6B700E9CBE4 /* TableViewController.swift */,
-				1EE1461C27A7D4FB003E1834 /* ViewController.swift */,
+				1EE1461C27A7D4FB003E1834 /* DetailedJutubeViewController.swift */,
 				1E8210F627A1B01200E9CBE4 /* AppDelegate.swift */,
 				1E8210F827A1B01200E9CBE4 /* SceneDelegate.swift */,
 				1E8210FF27A1B01300E9CBE4 /* Assets.xcassets */,
 				1E82110427A1B01300E9CBE4 /* Info.plist */,
+				1E233EB127A84AD500B03F71 /* JutubeViewController.swift */,
 			);
 			path = Jutube;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EE1461D27A7D4FB003E1834 /* ViewController.swift in Sources */,
-				1E82112D27A1D6B700E9CBE4 /* TableViewController.swift in Sources */,
+				1EE1461D27A7D4FB003E1834 /* DetailedJutubeViewController.swift in Sources */,
+				1E233EB227A84AD500B03F71 /* JutubeViewController.swift in Sources */,
 				1E8210F727A1B01200E9CBE4 /* AppDelegate.swift in Sources */,
 				1E8210F927A1B01200E9CBE4 /* SceneDelegate.swift in Sources */,
 				1E82112727A1B78100E9CBE4 /* Constants.swift in Sources */,

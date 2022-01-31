@@ -7,12 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetailedJutubeViewController: UIViewController {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var channelTitleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var playVideoButton: UIButton!
     
     var queue = DispatchQueue(label: "downloadImage")
     var video = Video()
@@ -20,17 +20,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = video.title
-        descriptionLabel.text = video.description
+        self.titleLabel.text = video.title
+        self.channelTitleLabel.text = video.channelTitle
+        self.descriptionLabel.text = video.description
         
-        self.asyncDownload()
-        
+        self.asyncDownloadImage()
     }
     
-    func asyncDownload() {
+    func asyncDownloadImage(){
         let url = URL(string: video.thumbnailUrl)
         
-        if (url == nil) {
+        if (url == nil){
             return
         }
         
