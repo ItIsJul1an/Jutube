@@ -29,8 +29,6 @@ class TableViewController: UITableViewController {
                 
                 self.model = tempModel
                 self.tableView.reloadData()
-                
-                print("loaded data")
             }
         }
     }
