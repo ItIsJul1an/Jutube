@@ -36,6 +36,11 @@ class ViewController: UIViewController {
         
         queue.async {
             let data = try? Data(contentsOf: url!)
+            
+            if (data == nil) {
+                return
+            }
+            
             DispatchQueue.main.async {
                 self.thumbnailImageView.image = UIImage(data: data!)
             }
