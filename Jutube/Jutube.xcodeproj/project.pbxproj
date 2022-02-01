@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1B8AE427A991AC0000C337 /* Jutube-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E1B8AE327A991AC0000C337 /* Jutube-Logo.png */; };
 		1E233EB227A84AD500B03F71 /* JutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E233EB127A84AD500B03F71 /* JutubeViewController.swift */; };
 		1E8210F727A1B01200E9CBE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8210F627A1B01200E9CBE4 /* AppDelegate.swift */; };
 		1E8210F927A1B01200E9CBE4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8210F827A1B01200E9CBE4 /* SceneDelegate.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1B8AE327A991AC0000C337 /* Jutube-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Jutube-Logo.png"; sourceTree = "<group>"; };
 		1E233EB127A84AD500B03F71 /* JutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JutubeViewController.swift; sourceTree = "<group>"; };
 		1E8210F327A1B01200E9CBE4 /* Jutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8210F627A1B01200E9CBE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		1E8210F527A1B01200E9CBE4 /* Jutube */ = {
 			isa = PBXGroup;
 			children = (
+				1E1B8AE327A991AC0000C337 /* Jutube-Logo.png */,
 				1E82112627A1B78100E9CBE4 /* Constants.swift */,
 				1E82110127A1B01300E9CBE4 /* LaunchScreen.storyboard */,
 				1E8210FC27A1B01200E9CBE4 /* Main.storyboard */,
@@ -243,6 +246,7 @@
 				1E82110327A1B01300E9CBE4 /* LaunchScreen.storyboard in Resources */,
 				1E82110027A1B01300E9CBE4 /* Assets.xcassets in Resources */,
 				1E8210FE27A1B01200E9CBE4 /* Main.storyboard in Resources */,
+				1E1B8AE427A991AC0000C337 /* Jutube-Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

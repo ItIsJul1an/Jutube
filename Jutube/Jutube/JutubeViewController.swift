@@ -82,7 +82,8 @@ class JutubeViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func onClick(_ sender: Any) {
         if self.searchTextField.text != nil {
-            if let url = URL(string: Constants.API_URI + self.searchTextField.text!.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)) {
+            let api_uri = Constants.API_URI + self.searchTextField.text!.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+            if let url = URL(string: api_uri) {
                 download(url: url)
             }
         }
